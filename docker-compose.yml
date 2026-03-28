@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: js-fastify-blog-app
+    working_dir: /app
+    volumes:
+      - ./app:/app
