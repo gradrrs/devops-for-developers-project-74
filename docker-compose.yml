@@ -1,9 +1,36 @@
-version: '3.8'
-
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile.production
     image: ddks33/devops-for-developers-project-74:latest
-    working_dir: /app
+    # или если собираете локально:
+    # build: ./app
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_USER=blog
+      - DB_PASSWORD=blog
+      - DB_NAME=blog
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    # Не публикуем порт 8080 наружу, только через Caddy
+    expose:
+      - "8080"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=blog
+      - POSTGRES_PASSWORD=blog
+      - POSTGRES_DB=blog
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U blog"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
