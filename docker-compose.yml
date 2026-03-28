@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   app:
-    build: .
-    image: js-fastify-blog-app
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    image: ddks33/devops-for-developers-project-74:latest
     working_dir: /app
-    volumes:
-      - ./app:/app
