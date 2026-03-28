@@ -1,18 +1,24 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/gradrrs/devops-for-developers-project-74/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/gradrrs/devops-for-developers-project-74/actions)
+# DevOps for Developers Project 74
 
-![CI/CD Pipeline](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/actions/workflows/push.yml/badge.svg)
 
-## Описание
-Проект для изучения DevOps практик с использованием Docker, Docker Compose и GitHub Actions.
+[![CI](https://github.com/ddks33/devops-for-developers-project-74/actions/workflows/ci.yml/badge.svg)](https://github.com/ddks33/devops-for-developers-project-74/actions/workflows/ci.yml)
 
-## Локальный запуск
+## Требования к системе
+
+- Docker (версия 20.10+)
+- Docker Compose (версия 2.0+)
+- Make (опционально, для использования команд Makefile)
+- Git
+
+## Быстрый старт
+
+### 1. Клонируйте репозиторий
+
 ```bash
-# Установка зависимостей
-docker compose run --rm app make setup
+git clone https://github.com/ddks33/devops-for-developers-project-74.git
+cd devops-for-developers-project-74
 
-# Запуск приложения
-docker compose up
+## Запуск
 
-# Запуск тестов
-make docker-test
+```bash
+docker-compose up
