@@ -7,6 +7,22 @@ services:
     volumes:
       - ./app:/app
       - /app/node_modules
-    ports:
-      - "8080:8080"
     command: make dev
+    depends_on:
+      - db
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
