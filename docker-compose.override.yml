@@ -1,4 +1,7 @@
 services:
+  app:
+    command: make dev
+
   caddy:
     image: caddy:2-alpine
     ports:
